@@ -12,9 +12,9 @@ class CategorySerializer(ModelSerializer):
         fields = '__all__'
 
     def to_representation(self, instance):
-        representation = super().to_representation(instance)
-        representation['products'] = ProductSerializer(instance.product_set.all(), many=True).data
-        return representation
+        represent = super().to_representation(instance)
+        represent['products'] = ProductSerializer(instance.product_set.all(), many=True).data
+        return represent
 
 class CartSerializer(ModelSerializer):
     class Meta:
@@ -22,7 +22,7 @@ class CartSerializer(ModelSerializer):
         fields = '__all__'
         
     def to_representation(self, instance):
-        representation = super().to_representation(instance)
-        representation['products'] = ProductSerializer(instance.products).data
-        return representation
+        represent = super().to_representation(instance)
+        represent['products'] = ProductSerializer(instance.products).data
+        return represent
     
